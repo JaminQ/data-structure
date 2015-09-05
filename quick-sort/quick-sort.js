@@ -1,9 +1,9 @@
 (function(){
     //交换算法
     Array.prototype.swap = function(i, j){
-        this[i] = this[i] + this[j];
-        this[j] = this[i] - this[j];
-        this[i] = this[i] - this[j];
+        var temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
     };
 
     Array.prototype.parseInt = function(){
@@ -40,26 +40,40 @@ angular.module('app', [], angular.noop)
             array.parseInt();
 
             //快速排序
-            quickSort(array);
+            quickSort(array, 0, array.length - 1);
 
             //控制结果的显示
             $scope.isShow = true;
         };
 
         //快速排序算法
-        function quickSort(array) {
-            var i = 0,
-                n = array.length;
+        function quickSort(array, low, high) {
+            var pivot;
 
-            for(i = Math.floor(n / 2) - 1; i >= 0; i--){
-                heapAdjust(array, i, n - 1);
+            if(low < high){
+                pivot = partition(array, low, high);
+
+                quickSort(array, low, pivot - 1);
+                quickSort(array, pivot + 1, high);
             }
 
-            for(i = n - 1; i > 0; i--){
-                array.swap(0, i);
-                heapAdjust(array, 0, i - 1);
-            }
             $scope.result = array.join(' ');
+        }
+
+        function partition(array, low, high){
+            var pivotKey = array[low];
+
+            while(low < high){
+                while(low < high && array[high] >= pivotKey){
+                    high--;
+                }
+                array.swap(low, high);
+                while(low < high && array[low] <= pivotKey){
+                    low++;
+                }
+                array.swap(low, high);
+            }
+            return low;
         }
 
         //前端验证
