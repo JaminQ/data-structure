@@ -1,3 +1,11 @@
+(function(){
+    Array.prototype.parseInt = function(){
+        for(var i = 0; i < this.length; i++){
+            this[i] = parseInt(this[i]);
+        }
+    }
+})();
+
 ;
 angular.module('app', [], angular.noop)
     .controller('ctrl', function($scope, $sce) {
@@ -31,6 +39,7 @@ angular.module('app', [], angular.noop)
 
             //对array进行排序
             array.sort(sortNumber);
+            array.parseInt();
 
             //折半查找
             binarySearch(array, array.length, $scope.key);

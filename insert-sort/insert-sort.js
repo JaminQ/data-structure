@@ -16,8 +16,8 @@
 ;
 angular.module('app', [], angular.noop)
     .controller('ctrl', function($scope) {
-        $scope.arrayString = '9 1 5 8 3 7 4 6 2';
-        // $scope.arrayString = '';
+        // $scope.arrayString = '9 1 5 8 3 7 4 6 2';
+        $scope.arrayString = '';
         $scope.result = '';
         $scope.isShow = false;
 

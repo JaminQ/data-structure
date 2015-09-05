@@ -1,3 +1,11 @@
+(function(){
+    Array.prototype.parseInt = function(){
+        for(var i = 0; i < this.length; i++){
+            this[i] = parseInt(this[i]);
+        }
+    }
+})();
+
 ;
 angular.module('app', [], angular.noop)
     .controller('ctrl', function($scope, $sce) {
@@ -28,6 +36,7 @@ angular.module('app', [], angular.noop)
 
             //将字符串变成数组
             array = $scope.arrayString.split(' ');
+            array.parseInt();
 
             //顺序查找
             sequentialSearch(array, array.length, $scope.key);
