@@ -1,11 +1,4 @@
 (function(){
-    //交换算法
-    Array.prototype.swap = function(i, j){
-        this[i] = this[i] + this[j];
-        this[j] = this[i] - this[j];
-        this[i] = this[i] - this[j];
-    };
-
     Array.prototype.parseInt = function(){
         for(var i = 0; i < this.length; i++){
             this[i] = parseInt(this[i]);
