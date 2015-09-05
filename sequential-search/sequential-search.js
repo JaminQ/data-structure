@@ -29,9 +29,6 @@ angular.module('app', [], angular.noop)
             //将字符串变成数组
             array = $scope.arrayString.split(' ');
 
-            //对array进行排序
-            array.sort(sortNumber);
-
             //顺序查找
             sequentialSearch(array, array.length, $scope.key);
 
@@ -41,38 +38,23 @@ angular.module('app', [], angular.noop)
 
         //顺序查找算法
         function sequentialSearch(array, n, key) {
-            var low = 0,
-                high = n - 1,
-                mid,
-                i = 0; //记录查找次数
-            while (low <= high) {
-                i++; //查找次数+1
-
-                mid = Math.floor((low + high) / 2);
-
-                if (key < array[mid]) {
-                    high = mid - 1;
-                } else if (key > array[mid]) {
-                    low = mid + 1;
-                } else {
+            var i = 0;
+            while(i < n){
+                if(key == array[i]){
                     $.each(array, function(index, val) {
-                        if (val != array[mid]) {
+                        if (val != key) {
                             $scope.result += (val + ' ');
                         } else {
                             $scope.result += ('<span class="value">' + val + ' </span>');
                         }
                     });
-                    $scope.result += '共查找<span class="value">' + i + '</span>次';
+                    $scope.result += '共查找<span class="value">' + (i + 1) + '</span>次';
                     $scope.result = $sce.trustAsHtml($scope.result);
                     return;
                 }
+                i++;
             }
             $scope.result = $sce.trustAsHtml('找不到，共查找<span class="value">' + i + '</span>次');
-        }
-
-        //sort()用到的排序函数
-        function sortNumber(a, b) {
-            return a - b;
         }
 
         //前端验证
