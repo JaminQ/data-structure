@@ -8,14 +8,16 @@
     <style type="text/css">
         label:after { content: "："; }
         .wrapper { margin: 5px 0; }
+        .tip { color: gray; font-size: 14px; }
+        .value { color: red; }
     </style>
 </head>
 <body>
     <div ng-controller="ctrl">
         <div class="wrapper">
-            <label for="array">所要查找的数组</label>
-            <input id="array" type="text" ng-model="arrayString" />
-            <span>使用空格间隔每一个值</span>
+            <label for="arrayString">所要查找的数组</label>
+            <input id="arrayString" type="text" ng-model="arrayString" />
+            <span class="tip">使用空格间隔每一个值</span>
         </div>
         <div class="wrapper">
             <label for="key">所要查找的值</label>
@@ -23,6 +25,9 @@
         </div>
         <div class="wrapper">
             <button ng-click="search()">查找</button>
+        </div>
+        <div class="wrapper">
+            <p ng-show="isShow" ng-bind-html="result"></p>
         </div>
     </div>
 
