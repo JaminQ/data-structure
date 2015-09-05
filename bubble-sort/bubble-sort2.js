@@ -10,8 +10,8 @@
 ;
 angular.module('app', [], angular.noop)
     .controller('ctrl', function($scope) {
-        $scope.arrayString = '9 1 5 8 3 7 4 6 2';
-        // $scope.arrayString = '';
+        // $scope.arrayString = '9 1 5 8 3 7 4 6 2';
+        $scope.arrayString = '';
         $scope.result = '';
         $scope.isShow = false;
 
@@ -36,22 +36,25 @@ angular.module('app', [], angular.noop)
             });
 
             //冒泡排序
-            bubbleSort(array);
+            bubbleSort2(array);
 
             //控制结果的显示
             $scope.isShow = true;
         };
 
-        //冒泡排序算法
-        function bubbleSort(array) {
+        //冒泡排序算法(优化)
+        function bubbleSort2(array) {
             var i = 0,
                 j = 0,
-                n = array.length;
+                n = array.length,
+                flag = true; //标记是否需要排序
 
-            for(i = 0; i < n - 1; i++){
+            for(i = 0; i < n - 1 && flag; i++){
+                flag = false;
                 for(j = i + 1; j < n; j++){
                     if(array[i] > array[j]){
                         array.swap(i, j);
+                        flag = true;
                     }
                 }
             }
