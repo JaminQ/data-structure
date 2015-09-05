@@ -5,6 +5,12 @@
         this[j] = this[i] - this[j];
         this[i] = this[i] - this[j];
     };
+
+    Array.prototype.parseInt = function(){
+        for(var i = 0; i < this.length; i++){
+            this[i] = parseInt(this[i]);
+        }
+    }
 })();
 
 ;
@@ -31,9 +37,7 @@ angular.module('app', [], angular.noop)
 
             //将字符串变成数组
             array = $scope.arrayString.split(' ');
-            $.each(array, function(index, val){
-                array[index] = parseInt(val);
-            });
+            array.parseInt();
 
             //冒泡排序
             bubbleSort(array);
