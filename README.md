@@ -5,3 +5,4 @@
 ## 目录
 
 * binary-search 折半查找
+* insert-value-search 插值查找
