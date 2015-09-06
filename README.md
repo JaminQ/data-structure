@@ -9,7 +9,6 @@
 * sequential-search 顺序查找
 * binary-search 折半查找
 * insert-value-search 插值查找
-* fibonacci-search 斐波那契查找         (TODO)
 
 ###排序算法
 
